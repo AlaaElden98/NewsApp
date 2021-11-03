@@ -1,12 +1,14 @@
 import React from 'react';
-import {SafeAreaView,Text} from 'react-native';
+import { Text, View} from 'react-native';
 
-const App = () => {
+import {NavigationContainer} from '@react-navigation/native';
+
+export default function App() {
   return (
-    <SafeAreaView>
-      <Text>Initial commit</Text>
-    </SafeAreaView>
+    <NavigationContainer>
+      <View>
+        <Text>Initial commit</Text>
+      </View>
+    </NavigationContainer>
   );
-};
-
-export default App;
+}
