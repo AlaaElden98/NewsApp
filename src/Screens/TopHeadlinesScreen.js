@@ -1,11 +1,24 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+
+import { DisplayText } from '../Components/DisplayText';
+
+const Tab = createMaterialTopTabNavigator();
 
 const TopHeadlinesScreen = () => {
   return (
-    <View>
-      <Text>TopHeadlinesScreen</Text>
-    </View>
+    <Tab.Navigator>
+      <Tab.Screen
+        name="Egypt"
+        component={DisplayText}
+        initialParams={{country: 'eg'}}
+      />
+      <Tab.Screen
+        name="UAE"
+        component={DisplayText}
+        initialParams={{country: 'ae'}}
+      />
+    </Tab.Navigator>
   );
 };
 
