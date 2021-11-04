@@ -2,11 +2,13 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import PropTypes from 'prop-types';
 
-const ResourceHeadlinesScreen = ({route}) => {
+import {List} from '../components/List';
+
+const ResourceHeadlinesScreen = ({navigation, route}) => {
   const {sourceId} = route.params;
   return (
     <View>
-      <Text>{sourceId}</Text>
+      <List navigation={navigation} headlines={true} />
     </View>
   );
 };

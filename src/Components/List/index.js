@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import {topHeadlineFakeResponse, sourcesFakeResponse} from '../../fakeData';
 import {responsiveWidth, responsiveHeight} from '../../utilis/helperFunctions';
 
-export const List = ({navigation, route}) => {
-  const isHeadlines = route ? route.params.isHeadlines : false;
+export const List = ({navigation, route, headlines = false}) => {
+  const isHeadlines = route ? route.params.isHeadlines : headlines;
   const DATA = isHeadlines
     ? topHeadlineFakeResponse.articles
     : sourcesFakeResponse.sources;
