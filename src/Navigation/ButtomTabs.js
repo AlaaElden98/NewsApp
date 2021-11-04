@@ -6,10 +6,13 @@ import HistoryScreen from '../screens/HistoryScreen';
 import {TopHeadlinesStack} from './stacks/TopHeadlinesStack';
 import {SourcesStack} from './stacks/SourcesStack';
 import {dodgerBlue, lightDodgerBlue} from '../utilis/colors';
+import {responsiveFontSize} from '../utilis/helperFunctions';
 
 const Tab = createBottomTabNavigator();
 
 export const ButtomTabs = () => {
+  const iconSize = responsiveFontSize(3.8);
+  const fontSize = responsiveFontSize(1.8);
   return (
     <Tab.Navigator
       initialRouteName="TopHeadlinesStack"
@@ -22,9 +25,9 @@ export const ButtomTabs = () => {
         component={TopHeadlinesStack}
         options={{
           title: 'Top headlines',
-          tabBarLabelStyle: {fontSize: 15},
+          tabBarLabelStyle: {fontSize: fontSize},
           tabBarIcon: ({color}) => (
-            <MaterialIcons name="trending-up" size={30} color={color} />
+            <MaterialIcons name="trending-up" size={iconSize} color={color} />
           ),
         }}
       />
@@ -33,9 +36,9 @@ export const ButtomTabs = () => {
         component={SourcesStack}
         options={{
           title: 'Sources',
-          tabBarLabelStyle: {fontSize: 15},
+          tabBarLabelStyle: {fontSize: fontSize},
           tabBarIcon: ({color}) => (
-            <MaterialIcons name="source" size={30} color={color} />
+            <MaterialIcons name="source" size={iconSize} color={color} />
           ),
         }}
       />
@@ -44,9 +47,9 @@ export const ButtomTabs = () => {
         component={HistoryScreen}
         options={{
           title: 'History',
-          tabBarLabelStyle: {fontSize: 15},
+          tabBarLabelStyle: {fontSize: fontSize},
           tabBarIcon: ({color}) => (
-            <MaterialIcons name="history" size={30} color={color} />
+            <MaterialIcons name="history" size={iconSize} color={color} />
           ),
         }}
       />
