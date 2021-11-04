@@ -22,7 +22,7 @@ export const topHeadlineFakeResponse = {
     },
     {
       source: {
-        id: 'the-washington-post',
+        id: 'the-washington-post1',
         name: 'The Washington Post',
       },
       author: 'Mike DeBonis',
@@ -39,7 +39,7 @@ export const topHeadlineFakeResponse = {
     },
     {
       source: {
-        id: 'the-washington-post',
+        id: 'the-washington-post2',
         name: 'The Washington Post',
       },
       author: 'Mike DeBonis',
@@ -56,7 +56,7 @@ export const topHeadlineFakeResponse = {
     },
     {
       source: {
-        id: 'the-washington-post',
+        id: 'the-washington-post3',
         name: 'The Washington Post',
       },
       author: 'Mike DeBonis',
@@ -73,7 +73,7 @@ export const topHeadlineFakeResponse = {
     },
     {
       source: {
-        id: 'the-washington-post',
+        id: 'the-washington-post4',
         name: 'The Washington Post',
       },
       author: 'Mike DeBonis',
@@ -90,7 +90,7 @@ export const topHeadlineFakeResponse = {
     },
     {
       source: {
-        id: 'the-washington-post',
+        id: 'the-washington-post5',
         name: 'The Washington Post',
       },
       author: 'Mike DeBonis',
@@ -107,7 +107,7 @@ export const topHeadlineFakeResponse = {
     },
     {
       source: {
-        id: 'the-washington-post',
+        id: 'the-washington-post6',
         name: 'The Washington Post',
       },
       author: 'Mike DeBonis',
@@ -124,7 +124,7 @@ export const topHeadlineFakeResponse = {
     },
     {
       source: {
-        id: 'the-washington-post',
+        id: 'the-washington-post7',
         name: 'The Washington Post',
       },
       author: 'Mike DeBonis',
@@ -158,7 +158,7 @@ export const sourcesFakeResponse = {
       country: 'us',
     },
     {
-      id: 'abc-news',
+      id: 'abc-news1',
       name: 'ABC News',
       description:
         'Your trusted source for breaking news, analysis, exclusive interviews, headlines, and videos at ABCNews.com.',
@@ -168,7 +168,7 @@ export const sourcesFakeResponse = {
       country: 'us',
     },
     {
-      id: 'abc-news',
+      id: 'abc-news2',
       name: 'ABC News',
       description:
         'Your trusted source for breaking news, analysis, exclusive interviews, headlines, and videos at ABCNews.com.',
@@ -178,7 +178,7 @@ export const sourcesFakeResponse = {
       country: 'us',
     },
     {
-      id: 'abc-news',
+      id: 'abc-news3',
       name: 'ABC News',
       description:
         'Your trusted source for breaking news, analysis, exclusive interviews, headlines, and videos at ABCNews.com.',
@@ -188,7 +188,7 @@ export const sourcesFakeResponse = {
       country: 'us',
     },
     {
-      id: 'abc-news',
+      id: 'abc-news4',
       name: 'ABC News',
       description:
         'Your trusted source for breaking news, analysis, exclusive interviews, headlines, and videos at ABCNews.com.',
@@ -223,7 +223,7 @@ export const headlinesFromResource = {
     },
     {
       source: {
-        id: 'abc-news',
+        id: 'abc-news1',
         name: 'ABC News',
       },
       author: 'CARA ANNA and AMANDA SEITZ Associated Press',
@@ -239,7 +239,7 @@ export const headlinesFromResource = {
     },
     {
       source: {
-        id: 'abc-news',
+        id: 'abc-news2',
         name: 'ABC News',
       },
       author: 'MIKE STOBBE AP Medical Writer',
