@@ -2,10 +2,10 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import HistoryScreen from '../Screens/HistoryScreen';
-import {TopHeadlinesStack} from './Stacks/TopHeadlinesStack';
-import {SourcesStack} from './Stacks/SourcesStack';
-import {dodgerBlue, lightDodgerBlue} from '../Utilis/colors';
+import HistoryScreen from '../screens/HistoryScreen';
+import {TopHeadlinesStack} from './stacks/TopHeadlinesStack';
+import {SourcesStack} from './stacks/SourcesStack';
+import {dodgerBlue, lightDodgerBlue} from '../utilis/colors';
 
 const Tab = createBottomTabNavigator();
 
