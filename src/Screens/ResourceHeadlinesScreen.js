@@ -1,12 +1,17 @@
 import React from 'react';
 import {View, Text} from 'react-native';
+import PropTypes from 'prop-types';
 
-const ResourceHeadlinesScreen = () => {
+const ResourceHeadlinesScreen = ({route}) => {
+  const {sourceId} = route.params;
   return (
     <View>
-      <Text>ResourceHeadlines</Text>
+      <Text>{sourceId}</Text>
     </View>
   );
 };
 
+ResourceHeadlinesScreen.propTypes = {
+  sourceId: PropTypes.string,
+};
 export default ResourceHeadlinesScreen;

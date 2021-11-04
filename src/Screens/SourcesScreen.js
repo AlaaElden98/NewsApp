@@ -1,12 +1,9 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-const SourcesScreen = () => {
-  return (
-    <View>
-      <Text>SourcesScreen</Text>
-    </View>
-  );
+import {List} from '../components/List';
+const SourcesScreen = ({navigation}) => {
+  return <List navigation={navigation} />;
 };
 
 export default SourcesScreen;
