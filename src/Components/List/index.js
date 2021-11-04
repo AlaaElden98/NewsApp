@@ -60,9 +60,6 @@ export const List = ({navigation, route}) => {
       <FlatList
         data={DATA}
         renderItem={isHeadlines ? renderItem : renderResourceItem}
-        keyExtractor={item => {
-          isHeadlines ? item.source.id : item.id;
-        }}
       />
     </View>
   );
