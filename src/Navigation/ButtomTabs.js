@@ -29,6 +29,7 @@ export const ButtomTabs = () => {
           tabBarIcon: ({color}) => (
             <MaterialIcons name="trending-up" size={iconSize} color={color} />
           ),
+          tabBarAccessibilityLabel: 'Top headlines in Egypt or UAE',
         }}
       />
       <Tab.Screen
@@ -40,6 +41,7 @@ export const ButtomTabs = () => {
           tabBarIcon: ({color}) => (
             <MaterialIcons name="source" size={iconSize} color={color} />
           ),
+          tabBarAccessibilityLabel: 'Sources',
         }}
       />
       <Tab.Screen
@@ -51,6 +53,7 @@ export const ButtomTabs = () => {
           tabBarIcon: ({color}) => (
             <MaterialIcons name="history" size={iconSize} color={color} />
           ),
+          tabBarAccessibilityLabel: 'History',
         }}
       />
     </Tab.Navigator>
