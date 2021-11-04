@@ -11,7 +11,7 @@ export function TopHeadlinesStack() {
     <Stack.Navigator
       initialRouteName="TopHeadlines"
      >
-      <Stack.Screen name="TopHeadlinesScreen" component={TopHeadlinesScreen} />
+      <Stack.Screen name="TopHeadlinesScreen" component={TopHeadlinesScreen} options={{title:'Top Headlines'}}/>
       <Stack.Screen
         name="DetailsScreen"
         component={DetailsScreen}
