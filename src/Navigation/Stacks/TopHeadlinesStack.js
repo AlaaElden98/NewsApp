@@ -8,9 +8,15 @@ const Stack = createNativeStackNavigator();
 
 export function TopHeadlinesStack() {
   return (
-    <Stack.Navigator initialRouteName='TopHeadlines' screenOptions={{headerShown: false}}>
+    <Stack.Navigator
+      initialRouteName="TopHeadlines"
+     >
       <Stack.Screen name="TopHeadlinesScreen" component={TopHeadlinesScreen} />
-      <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
+      <Stack.Screen
+        name="DetailsScreen"
+        component={DetailsScreen}
+        options={{title: 'Details'}}
+      />
     </Stack.Navigator>
   );
 }

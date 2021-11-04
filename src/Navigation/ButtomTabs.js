@@ -25,6 +25,7 @@ export const ButtomTabs = () => {
         component={TopHeadlinesStack}
         options={{
           title: 'Top headlines',
+          headerShown : false,
           tabBarLabelStyle: {fontSize: fontSize},
           tabBarIcon: ({color}) => (
             <MaterialIcons name="trending-up" size={iconSize} color={color} />
@@ -37,6 +38,7 @@ export const ButtomTabs = () => {
         component={SourcesStack}
         options={{
           title: 'Sources',
+          headerShown : false,
           tabBarLabelStyle: {fontSize: fontSize},
           tabBarIcon: ({color}) => (
             <MaterialIcons name="source" size={iconSize} color={color} />
