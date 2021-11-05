@@ -2,15 +2,13 @@ import React from 'react';
 import {FlatList, View, Text, TouchableOpacity, Image} from 'react-native';
 import PropTypes from 'prop-types';
 
-import {topHeadlineFakeResponse, sourcesFakeResponse} from '../../fakeData';
+import {topHeadlineFakeResponse} from '../../fakeData';
 import {responsiveWidth, responsiveHeight} from '../../utilis/helperFunctions';
 
-export const List = ({navigation, route, headlines = false}) => {
+export const List = ({navigation, route, headlines = false, data}) => {
   const isHeadlines = route ? route.params.isHeadlines : headlines;
-  const DATA = isHeadlines
-    ? topHeadlineFakeResponse.articles
-    : sourcesFakeResponse.sources;
-
+  const DATA = data ? data : topHeadlineFakeResponse.articles;
+ 
   const renderItem = ({item}) => {
     return (
       <TouchableOpacity
