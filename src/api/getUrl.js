@@ -6,7 +6,7 @@ const HEADLINES_ENDPOINT = '/v2/top-headlines';
 const SOURCE_ENDPOINT = '/v2/top-headlines/sources';
 const sourceHeadlinesUrl = 'https://newsapi.org/v2/everything?sources';
 
-export const getSourcesHeadlines = (source_id, page = 1) => {
+export const getSourcesHeadlinesUrl = (source_id, page = 1) => {
   return sourceHeadlinesUrl + `=${source_id}&page=${page}&apiKey=${API_KEY}`;
 };
 
@@ -14,7 +14,7 @@ export const getSourcesUrl = () => {
   return BASE_URL + SOURCE_ENDPOINT + `?apiKey=${API_KEY}`;
 };
 
-export const getTopHeadlines = (page = 1, country, category) => {
+export const getTopHeadlinesUrl = (page = 1, country, category) => {
   return (
     BASE_URL +
     HEADLINES_ENDPOINT +
