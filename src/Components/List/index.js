@@ -41,7 +41,6 @@ export const List = ({navigation, route, headlines = false}) => {
     );
   };
   const renderResourceItem = ({item}) => {
-    console.log(item.id);
     return (
       <TouchableOpacity
         onPress={() => {
