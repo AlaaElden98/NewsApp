@@ -2,7 +2,7 @@ import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 import {DisplayText} from '../components/DisplayText';
-import {List} from '../components/List';
+import {TopHeadlinesList} from '../components/Lists/TopHeadlinesList';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -11,13 +11,13 @@ const TopHeadlinesScreen = () => {
     <Tab.Navigator>
       <Tab.Screen
         name="Egypt"
-        component={List}
-        initialParams={{country: 'eg', isHeadlines: true}}
+        component={TopHeadlinesList}
+        initialParams={{country: 'eg'}}
       />
       <Tab.Screen
         name="UAE"
-        component={List}
-        initialParams={{country: 'ae', isHeadlines: true}}
+        component={TopHeadlinesList}
+        initialParams={{country: 'ae'}}
       />
     </Tab.Navigator>
   );

@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {View, Text} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {List} from '../components/List';
+import {SourcesList} from '../components/Lists/SourcesList';
 import {getSources} from '../redux/sourcesSlice';
 
 const SourcesScreen = ({navigation}) => {
@@ -17,7 +17,7 @@ const SourcesScreen = ({navigation}) => {
 
   const sources = useSelector(state => state.sources.items);
 
-  return <List navigation={navigation} data={sources} />;
+  return <SourcesList navigation={navigation} data={sources} />;
 };
 
 export default SourcesScreen;

@@ -1,14 +1,13 @@
 import React from 'react';
 import {FlatList, View, Text, TouchableOpacity, Image} from 'react-native';
-import PropTypes from 'prop-types';
 
 import {topHeadlineFakeResponse} from '../../fakeData';
 import {responsiveWidth, responsiveHeight} from '../../utilis/helperFunctions';
 
-export const List = ({navigation, route, headlines = false, data}) => {
-  const isHeadlines = route ? route.params.isHeadlines : headlines;
-  const DATA = data ? data : topHeadlineFakeResponse.articles;
- 
+export const TopHeadlinesList = ({navigation, route}) => {
+  const DATA = topHeadlineFakeResponse.articles;
+  const {country} = route.params;
+  console.log(route.params)
   const renderItem = ({item}) => {
     return (
       <TouchableOpacity
@@ -38,30 +37,10 @@ export const List = ({navigation, route, headlines = false, data}) => {
       </TouchableOpacity>
     );
   };
-  const renderResourceItem = ({item}) => {
-    return (
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate('ResourceHeadlinesScreen', {
-            sourceId: item.id,
-          });
-        }}>
-        <View>
-          <Text>`Name: {item.name}`</Text>
-        </View>
-      </TouchableOpacity>
-    );
-  };
+
   return (
     <View>
-      <FlatList
-        data={DATA}
-        renderItem={isHeadlines ? renderItem : renderResourceItem}
-      />
+      <FlatList data={DATA} renderItem={renderItem} />
     </View>
   );
-};
-
-List.propTypes = {
-  isHeadlines: PropTypes.bool,
 };
