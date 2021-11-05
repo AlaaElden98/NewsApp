@@ -1,7 +1,6 @@
 import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
-import {DisplayText} from '../components/DisplayText';
 import {TopHeadlinesList} from '../components/Lists/TopHeadlinesList';
 
 const Tab = createMaterialTopTabNavigator();
