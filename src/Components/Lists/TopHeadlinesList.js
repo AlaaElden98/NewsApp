@@ -9,20 +9,33 @@ import {responsiveWidth, responsiveHeight} from '../../utilis/helperFunctions';
 export const TopHeadlinesList = ({navigation, route}) => {
   const {country} = route.params;
   const dispatch = useDispatch();
+
   const status =
     country === 'eg'
       ? useSelector(state => state.topHeadlinesEG.status)
       : useSelector(state => state.topHeadlinesUAE.status);
 
+  const dispatchTopHeadlinesEG = (page = 1) => {
+    dispatch(
+      getTopHeadlinesEG({page: page, country: country, category: 'sports'}),
+    );
+    dispatch(
+      getTopHeadlinesEG({page: 1, country: country, category: 'business'}),
+    );
+  };
+
+  const dispatchTopHeadlinesUAE = (page = 1) => {
+    dispatch(
+      getTopHeadlinesUAE({page: page, country: country, category: 'sports'}),
+    );
+    dispatch(
+      getTopHeadlinesUAE({page: 1, country: country, category: 'business'}),
+    );
+  };
+
   useEffect(() => {
     if (status === 'idle') {
-      country === 'eg'
-        ? dispatch(
-            getTopHeadlinesEG({page: 1, country: country, category: 'sports'}),
-          )
-        : dispatch(
-            getTopHeadlinesUAE({page: 1, country: country, category: 'sports'}),
-          );
+      country === 'eg' ? dispatchTopHeadlinesEG(1) : dispatchTopHeadlinesUAE(1);
     }
   }, [dispatch]);
 
@@ -63,7 +76,10 @@ export const TopHeadlinesList = ({navigation, route}) => {
 
   return (
     <View>
-      <FlatList data={topHeadlines} renderItem={renderItem} />
+      <FlatList
+        data={topHeadlines}
+        renderItem={renderItem}
+      />
     </View>
   );
 };
