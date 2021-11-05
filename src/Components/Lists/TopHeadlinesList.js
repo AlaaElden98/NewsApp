@@ -7,7 +7,7 @@ import {updateEGStatus} from '../../redux/topHeadlinesEGSlice';
 import {updateUAEStatus} from '../../redux/topHeadlinesUAESlice';
 import {getTopHeadlinesUAE} from '../../redux/topHeadlinesUAESlice';
 import {responsiveWidth, responsiveHeight} from '../../utilis/helperFunctions';
-import { MAXIMUM_RESULTS_PAGE } from '../../utilis/constants';
+import {MAXIMUM_RESULTS_PAGE} from '../../utilis/constants';
 
 export const TopHeadlinesList = ({navigation, route}) => {
   const {country} = route.params;
@@ -56,8 +56,8 @@ export const TopHeadlinesList = ({navigation, route}) => {
     setPage(page + 1);
   };
   const stopFetching = () => {
-    updateEGStatus('stop');
-    updateUAEStatus('stop');
+    dispatch(updateEGStatus('stop'));
+    dispatch(updateUAEStatus('stop'));
   };
   const renderItem = ({item}) => {
     return (
