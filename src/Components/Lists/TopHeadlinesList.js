@@ -1,13 +1,16 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {FlatList, View, Text, TouchableOpacity, Image} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {getTopHeadlinesEG} from '../../redux/topHeadlinesEGSlice';
+import {updateEGStatus} from '../../redux/topHeadlinesEGSlice';
+import {updateUAEStatus} from '../../redux/topHeadlinesUAESlice';
 import {getTopHeadlinesUAE} from '../../redux/topHeadlinesUAESlice';
 import {responsiveWidth, responsiveHeight} from '../../utilis/helperFunctions';
 
 export const TopHeadlinesList = ({navigation, route}) => {
   const {country} = route.params;
+  const [page, setPage] = useState(1);
   const dispatch = useDispatch();
 
   const status =
@@ -15,12 +18,25 @@ export const TopHeadlinesList = ({navigation, route}) => {
       ? useSelector(state => state.topHeadlinesEG.status)
       : useSelector(state => state.topHeadlinesUAE.status);
 
+  useEffect(() => {
+    if (status === 'idle') {
+      country === 'eg'
+        ? dispatchTopHeadlinesEG(page)
+        : dispatchTopHeadlinesUAE(page);
+    }
+  }, [dispatch, page]);
+
+  const topHeadlines =
+    country === 'eg'
+      ? useSelector(state => state.topHeadlinesEG.items)
+      : useSelector(state => state.topHeadlinesUAE.items);
+
   const dispatchTopHeadlinesEG = (page = 1) => {
     dispatch(
       getTopHeadlinesEG({page: page, country: country, category: 'sports'}),
     );
     dispatch(
-      getTopHeadlinesEG({page: 1, country: country, category: 'business'}),
+      getTopHeadlinesEG({page: page, country: country, category: 'business'}),
     );
   };
 
@@ -29,21 +45,15 @@ export const TopHeadlinesList = ({navigation, route}) => {
       getTopHeadlinesUAE({page: page, country: country, category: 'sports'}),
     );
     dispatch(
-      getTopHeadlinesUAE({page: 1, country: country, category: 'business'}),
+      getTopHeadlinesUAE({page: page, country: country, category: 'business'}),
     );
   };
 
-  useEffect(() => {
-    if (status === 'idle') {
-      country === 'eg' ? dispatchTopHeadlinesEG(1) : dispatchTopHeadlinesUAE(1);
-    }
-  }, [dispatch]);
-
-  const topHeadlines =
-    country === 'eg'
-      ? useSelector(state => state.topHeadlinesEG.items)
-      : useSelector(state => state.topHeadlinesUAE.items);
-
+  const getNextPage = () => {
+    dispatch(updateEGStatus('idle'));
+    dispatch(updateUAEStatus('idle'));
+    setPage(page + 1);
+  };
   const renderItem = ({item}) => {
     return (
       <TouchableOpacity
@@ -79,6 +89,8 @@ export const TopHeadlinesList = ({navigation, route}) => {
       <FlatList
         data={topHeadlines}
         renderItem={renderItem}
+        onEndReachedThreshold={0.5}
+        onEndReached={getNextPage}
       />
     </View>
   );

@@ -12,6 +12,7 @@ export const getTopHeadlinesEG = createAsyncThunk(
   'topHeadlinesEG/getTopHeadlinesEG',
   async ({page, country, category}) => {
     const url = getTopHeadlinesUrl(page, country, category);
+    console.log(url);
     const response = await fetch(url);
     const data = await response.json();
     return data.articles;
@@ -21,6 +22,11 @@ export const getTopHeadlinesEG = createAsyncThunk(
 const topHeadlinesEGSlice = createSlice({
   name: 'topHeadlinesEG',
   initialState,
+  reducers: {
+    updateEGStatus: (state, action) => {
+      state.status = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(getTopHeadlinesEG.pending, (state, action) => {
@@ -41,4 +47,5 @@ const topHeadlinesEGSlice = createSlice({
   },
 });
 
+export const {updateEGStatus} = topHeadlinesEGSlice.actions;
 export default topHeadlinesEGSlice.reducer;

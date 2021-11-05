@@ -21,6 +21,11 @@ export const getTopHeadlinesUAE = createAsyncThunk(
 const topHeadlinesUAESlice = createSlice({
   name: 'topHeadlinesUAE',
   initialState,
+  reducers: {
+    updateUAEStatus: (state, action) => {
+      state.status = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(getTopHeadlinesUAE.pending, (state, action) => {
@@ -41,4 +46,5 @@ const topHeadlinesUAESlice = createSlice({
   },
 });
 
+export const {updateUAEStatus} = topHeadlinesUAESlice.actions;
 export default topHeadlinesUAESlice.reducer;
