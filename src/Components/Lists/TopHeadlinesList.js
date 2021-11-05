@@ -7,6 +7,7 @@ import {updateEGStatus} from '../../redux/topHeadlinesEGSlice';
 import {updateUAEStatus} from '../../redux/topHeadlinesUAESlice';
 import {getTopHeadlinesUAE} from '../../redux/topHeadlinesUAESlice';
 import {responsiveWidth, responsiveHeight} from '../../utilis/helperFunctions';
+import { MAXIMUM_RESULTS_PAGE } from '../../utilis/constants';
 
 export const TopHeadlinesList = ({navigation, route}) => {
   const {country} = route.params;
@@ -54,6 +55,10 @@ export const TopHeadlinesList = ({navigation, route}) => {
     dispatch(updateUAEStatus('idle'));
     setPage(page + 1);
   };
+  const stopFetching = () => {
+    updateEGStatus('stop');
+    updateUAEStatus('stop');
+  };
   const renderItem = ({item}) => {
     return (
       <TouchableOpacity
@@ -90,7 +95,7 @@ export const TopHeadlinesList = ({navigation, route}) => {
         data={topHeadlines}
         renderItem={renderItem}
         onEndReachedThreshold={0.5}
-        onEndReached={getNextPage}
+        onEndReached={page < MAXIMUM_RESULTS_PAGE ? getNextPage : stopFetching}
       />
     </View>
   );
