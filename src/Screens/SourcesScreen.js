@@ -9,8 +9,6 @@ const SourcesScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const status = useSelector(state => state.sources.status);
   
-  console.log(status);
-
   useEffect(() => {
     if (status === 'idle') dispatch(getSources());
   }, [dispatch]);

@@ -1,13 +1,36 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {FlatList, View, Text, TouchableOpacity, Image} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 
-import {topHeadlineFakeResponse} from '../../fakeData';
+import {getTopHeadlinesEG} from '../../redux/topHeadlinesEGSlice';
+import {getTopHeadlinesUAE} from '../../redux/topHeadlinesUAESlice';
 import {responsiveWidth, responsiveHeight} from '../../utilis/helperFunctions';
 
 export const TopHeadlinesList = ({navigation, route}) => {
-  const DATA = topHeadlineFakeResponse.articles;
   const {country} = route.params;
-  console.log(route.params)
+  const dispatch = useDispatch();
+  const status =
+    country === 'eg'
+      ? useSelector(state => state.topHeadlinesEG.status)
+      : useSelector(state => state.topHeadlinesUAE.status);
+
+  useEffect(() => {
+    if (status === 'idle') {
+      country === 'eg'
+        ? dispatch(
+            getTopHeadlinesEG({page: 1, country: country, category: 'sports'}),
+          )
+        : dispatch(
+            getTopHeadlinesUAE({page: 1, country: country, category: 'sports'}),
+          );
+    }
+  }, [dispatch]);
+
+  const topHeadlines =
+    country === 'eg'
+      ? useSelector(state => state.topHeadlinesEG.items)
+      : useSelector(state => state.topHeadlinesUAE.items);
+
   const renderItem = ({item}) => {
     return (
       <TouchableOpacity
@@ -40,7 +63,7 @@ export const TopHeadlinesList = ({navigation, route}) => {
 
   return (
     <View>
-      <FlatList data={DATA} renderItem={renderItem} />
+      <FlatList data={topHeadlines} renderItem={renderItem} />
     </View>
   );
 };
