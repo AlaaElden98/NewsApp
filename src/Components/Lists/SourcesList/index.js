@@ -1,6 +1,7 @@
 import React from 'react';
 import {FlatList, View, Text, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
+import {styles} from './styles';
 
 export const SourcesList = ({navigation, data}) => {
   const renderItem = ({item}) => {
@@ -11,16 +12,21 @@ export const SourcesList = ({navigation, data}) => {
             sourceId: item.id,
           });
         }}>
-        <View>
-          <Text>`Name: {item.name}`</Text>
+        <View style={styles.container}>
+          <Text style={styles.name}>{item.name}</Text>
+          <Text style={styles.description}>{item.description}</Text>
+          <Text style={styles.additionalInfo}>{item.country}</Text>
+          <Text style={styles.additionalInfo}>{item.category}</Text>
         </View>
       </TouchableOpacity>
     );
   };
   return (
-    <View>
-      <FlatList data={data} renderItem={renderItem} />
-    </View>
+    <FlatList
+      data={data}
+      renderItem={renderItem}
+      style={{backgroundColor: 'white'}}
+    />
   );
 };
 
