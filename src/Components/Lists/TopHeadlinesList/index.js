@@ -6,7 +6,7 @@ import {getTopHeadlinesEG} from '../../../redux/topHeadlinesEGSlice';
 import {updateEGStatus} from '../../../redux/topHeadlinesEGSlice';
 import {updateUAEStatus} from '../../../redux/topHeadlinesUAESlice';
 import {getTopHeadlinesUAE} from '../../../redux/topHeadlinesUAESlice';
-import {getDateAndTime} from '../../../utilis/helperFunctions';
+import {getCountryName} from '../../../utilis/helperFunctions';
 import {MAXIMUM_RESULTS_PAGE} from '../../../utilis/constants';
 import {topHeadlineFakeResponse} from '../../../fakeData';
 import {Card} from '../../Card';
@@ -33,7 +33,10 @@ export const TopHeadlinesList = ({navigation, route}) => {
 
   useEffect(() => {
     if (status === 'failed') {
-      Alert.alert(err.message, 'Try again later');
+      Alert.alert(
+        err.message,
+        `Unable to load ${getCountryName(country)} top headlines, Try later!`,
+      );
     }
   }, [status]);
   const topHeadlines =

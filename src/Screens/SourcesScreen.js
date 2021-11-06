@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { Alert } from 'react-native';
+import {Alert} from 'react-native';
 
 import {SourcesList} from '../components/Lists/SourcesList';
-import { sourcesFakeResponse } from '../fakeData';
+import {sourcesFakeResponse} from '../fakeData';
 import {getSources} from '../redux/sourcesSlice';
 
 const SourcesScreen = ({navigation}) => {
@@ -19,11 +19,13 @@ const SourcesScreen = ({navigation}) => {
   const err = useSelector(state => state.sources.error);
   useEffect(() => {
     if (status === 'failed') {
-      Alert.alert(err.message, 'Try again later');
+      Alert.alert(err.message, 'Unable to load Sources');
     }
   }, [status]);
 
-  return <SourcesList navigation={navigation} data={sourcesFakeResponse.sources} />;
+  return (
+    <SourcesList navigation={navigation} data={sourcesFakeResponse.sources} />
+  );
 };
 
 export default SourcesScreen;

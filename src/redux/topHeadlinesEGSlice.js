@@ -41,7 +41,6 @@ const topHeadlinesEGSlice = createSlice({
       .addCase(getTopHeadlinesEG.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error;
-        console.log(state.error);
       });
   },
 });

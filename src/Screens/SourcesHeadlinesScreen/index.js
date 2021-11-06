@@ -17,7 +17,6 @@ const SourceHeadlinesScreen = ({navigation, route}) => {
   const dispatch = useDispatch();
 
   const status = useSelector(state => state.sourcesHeadlines.status);
-  console.log(status);
 
   useEffect(() => {
     if (status === 'idle')
@@ -37,7 +36,7 @@ const SourceHeadlinesScreen = ({navigation, route}) => {
   const err = useSelector(state => state.sourcesHeadlines.error);
   useEffect(() => {
     if (status === 'failed') {
-      Alert.alert(err.message, 'Try again later');
+      Alert.alert(err.message, 'Unable to load Source headlines, Try later!');
     }
   }, [status]);
   const renderItem = ({item}) => {

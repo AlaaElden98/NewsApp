@@ -10,8 +10,8 @@ const initialState = {
 
 export const getSourcesHeadlines = createAsyncThunk(
   'sourcesHeadlines/getSourcesHeadlines',
-  async ({source_id,page}) => {
-    const url = getSourcesHeadlinesUrl(source_id,page);
+  async ({source_id, page}) => {
+    const url = getSourcesHeadlinesUrl(source_id, page);
     const response = await fetch(url);
     const data = await response.json();
     return data.articles;
@@ -41,7 +41,6 @@ const sourcesHeadlinesSlice = createSlice({
       .addCase(getSourcesHeadlines.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error;
-        console.log(state.error);
       });
   },
 });
