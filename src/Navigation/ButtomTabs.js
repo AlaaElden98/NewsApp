@@ -11,7 +11,7 @@ import {responsiveFontSize} from '../utilis/helperFunctions';
 const Tab = createBottomTabNavigator();
 
 export const ButtomTabs = () => {
-  const iconSize = responsiveFontSize(3.8);
+  const iconSize = responsiveFontSize(3.9);
   const fontSize = responsiveFontSize(1.8);
   return (
     <Tab.Navigator
@@ -24,7 +24,7 @@ export const ButtomTabs = () => {
         name="TopHeadlinesStack"
         component={TopHeadlinesStack}
         options={{
-          title: 'Top headlines',
+          title: 'Top Headlines',
           headerShown: false,
           tabBarLabelStyle: {fontSize: fontSize},
           tabBarIcon: ({color}) => (
