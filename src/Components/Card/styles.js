@@ -3,7 +3,8 @@ import {
   responsiveFontSize,
   responsiveHeight,
   responsiveWidth,
-} from '../../../utilis/helperFunctions';
+} from '../../utilis/helperFunctions';
+
 export const styles = StyleSheet.create({
   itemContainer: {
     backgroundColor: '#f7f7f7',
@@ -20,7 +21,7 @@ export const styles = StyleSheet.create({
     resizeMode: 'cover',
     margin: 5,
   },
-  noImage:{
+  noImage: {
     width: responsiveWidth(93),
     height: responsiveHeight(30),
     alignSelf: 'center',
@@ -48,10 +49,10 @@ export const styles = StyleSheet.create({
   },
   timeText: {
     fontSize: responsiveFontSize(1.8),
-    marginLeft:3
+    marginLeft: 3,
   },
-  dateText:{
+  dateText: {
     fontSize: responsiveFontSize(1.8),
-    marginRight:8
-  }
+    marginRight: 8,
+  },
 });

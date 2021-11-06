@@ -1,24 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-  FlatList,
-  Alert,
-} from 'react-native';
+import {View, TouchableOpacity, FlatList, Alert} from 'react-native';
 import PropTypes from 'prop-types';
 import {useDispatch, useSelector} from 'react-redux';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {
   getSourcesHeadlines,
   updateSourcesHeadlinesStatus,
 } from '../../redux/sourcesHeadlinesSlice';
 import {MAXIMUM_RESULTS_PAGE} from '../../utilis/constants';
-import {getDateAndTime, responsiveFontSize} from '../../utilis/helperFunctions';
-import {styles} from './styles';
-import {topHeadlineFakeResponse} from '../../fakeData';
+import {getDateAndTime} from '../../utilis/helperFunctions';
+import {Card} from '../../components/Card';
 
 const SourceHeadlinesScreen = ({navigation, route}) => {
   const {sourceId} = route.params;
@@ -50,7 +41,6 @@ const SourceHeadlinesScreen = ({navigation, route}) => {
     }
   }, [status]);
   const renderItem = ({item}) => {
-    const {date, time} = getDateAndTime(item.publishedAt);
     return (
       <TouchableOpacity
         onPress={() => {
@@ -64,36 +54,12 @@ const SourceHeadlinesScreen = ({navigation, route}) => {
             sourceName: item.source.name,
           });
         }}>
-        <View style={styles.itemContainer}>
-          <Image
-            source={
-              item.urlToImage
-                ? {
-                    uri: item.urlToImage,
-                  }
-                : require('../../utilis/assests/NO_IMAGE.jpg')
-            }
-            style={item.urlToImage ? styles.image : styles.noImage}
-            loadingIndicatorSource={1}
-          />
-          {item.title !== '' && item.title && (
-            <Text style={styles.title}>{item.title}`</Text>
-          )}
-          {item.author !== '' && item.author && (
-            <Text style={styles.author}>Author: {item.author}</Text>
-          )}
-          {item.publishedAt !== '' && item.publishedAt && (
-            <View style={styles.timeContainer}>
-              <Text style={styles.dateText}>{date}</Text>
-              <Ionicons
-                name="md-time-outline"
-                size={responsiveFontSize(2.4)}
-                style={{marginLeft: 4}}
-              />
-              <Text style={styles.timeText}>{time}</Text>
-            </View>
-          )}
-        </View>
+        <Card
+          urlToImage={item.urlToImage}
+          title={item.title}
+          author={item.author}
+          publishedAt={item.publishedAt}
+        />
       </TouchableOpacity>
     );
   };

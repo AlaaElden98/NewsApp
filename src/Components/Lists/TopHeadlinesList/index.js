@@ -1,19 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, View, Text, TouchableOpacity, Image, Alert} from 'react-native';
+import {FlatList, TouchableOpacity, Alert} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {getTopHeadlinesEG} from '../../../redux/topHeadlinesEGSlice';
 import {updateEGStatus} from '../../../redux/topHeadlinesEGSlice';
 import {updateUAEStatus} from '../../../redux/topHeadlinesUAESlice';
 import {getTopHeadlinesUAE} from '../../../redux/topHeadlinesUAESlice';
-import {
-  responsiveFontSize,
-  getDateAndTime,
-} from '../../../utilis/helperFunctions';
+import {getDateAndTime} from '../../../utilis/helperFunctions';
 import {MAXIMUM_RESULTS_PAGE} from '../../../utilis/constants';
 import {topHeadlineFakeResponse} from '../../../fakeData';
-import {styles} from './styles';
+import {Card} from '../../Card';
 
 export const TopHeadlinesList = ({navigation, route}) => {
   const {country} = route.params;
@@ -33,11 +29,11 @@ export const TopHeadlinesList = ({navigation, route}) => {
     }
   }, [dispatch, page]);
 
-  const err = useSelector(state=>state.topHeadlinesEG.error)
-  
+  const err = useSelector(state => state.topHeadlinesEG.error);
+
   useEffect(() => {
-    if(status==='failed'){
-      Alert.alert(err.message,'Try again later')
+    if (status === 'failed') {
+      Alert.alert(err.message, 'Try again later');
     }
   }, [status]);
   const topHeadlines =
@@ -73,7 +69,6 @@ export const TopHeadlinesList = ({navigation, route}) => {
     dispatch(updateUAEStatus('stop'));
   };
   const renderItem = ({item}) => {
-    const {date, time} = getDateAndTime(item.publishedAt);
     return (
       <TouchableOpacity
         onPress={() => {
@@ -87,36 +82,12 @@ export const TopHeadlinesList = ({navigation, route}) => {
             sourceName: item.source.name,
           });
         }}>
-        <View style={styles.itemContainer}>
-          <Image
-            source={
-              item.urlToImage
-                ? {
-                    uri: item.urlToImage,
-                  }
-                : require('../../../utilis/assests/NO_IMAGE.jpg')
-            }
-            style={item.urlToImage ? styles.image : styles.noImage}
-            loadingIndicatorSource={1}
-          />
-          {item.title !== '' && item.title && (
-            <Text style={styles.title}>{item.title}`</Text>
-          )}
-          {item.author !== '' && item.author && (
-            <Text style={styles.author}>Author: {item.author}</Text>
-          )}
-          {item.publishedAt !== '' && item.publishedAt && (
-            <View style={styles.timeContainer}>
-              <Text style={styles.dateText}>{date}</Text>
-              <Ionicons
-                name="md-time-outline"
-                size={responsiveFontSize(2.4)}
-                style={{marginLeft: 4}}
-              />
-              <Text style={styles.timeText}>{time}</Text>
-            </View>
-          )}
-        </View>
+        <Card
+          urlToImage={item.urlToImage}
+          title={item.title}
+          author={item.author}
+          publishedAt={item.publishedAt}
+        />
       </TouchableOpacity>
     );
   };
