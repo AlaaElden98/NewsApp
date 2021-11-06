@@ -2,6 +2,7 @@ import React from 'react';
 import {FlatList, View, Text, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 import {styles} from './styles';
+import { getCountryName } from '../../../utilis/helperFunctions';
 
 export const SourcesList = ({navigation, data}) => {
   const renderItem = ({item}) => {
@@ -15,7 +16,7 @@ export const SourcesList = ({navigation, data}) => {
         <View style={styles.container}>
           <Text style={styles.name}>{item.name}</Text>
           <Text style={styles.description}>{item.description}</Text>
-          <Text style={styles.additionalInfo}>{item.country}</Text>
+          <Text style={styles.additionalInfo}>{getCountryName(item.country)}</Text>
           <Text style={styles.additionalInfo}>{item.category}</Text>
         </View>
       </TouchableOpacity>
