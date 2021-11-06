@@ -45,9 +45,10 @@ const DetailsScreen = ({route}) => {
       };
       dispatch(addItem(item));
     } else {
-      history[elementIndex].date = currentData;
-      history[elementIndex].time = currentTime;
-      updateItems(history);
+      const copy = JSON.parse(JSON.stringify(history));
+      copy[elementIndex].date = currentData;
+      copy[elementIndex].time = currentTime;
+      dispatch(updateItems(copy));
     }
   };
   useEffect(() => {
