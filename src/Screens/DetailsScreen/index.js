@@ -1,11 +1,12 @@
 import React, {useCallback} from 'react';
 import {View, Text, Image, ScrollView, Alert, Linking} from 'react-native';
 import PropTypes from 'prop-types';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import {getDateAndTime, responsiveFontSize} from '../../utilis/helperFunctions';
+import {IconWithText} from '../../components/IconWithText';
+import {getDateAndTime} from '../../utilis/helperFunctions';
 import {dodgerBlue} from '../../utilis/colors';
 import {styles} from './styles';
+
 const DetailsScreen = ({route}) => {
   const {
     author,
@@ -51,46 +52,33 @@ const DetailsScreen = ({route}) => {
         />
 
         {title !== '' && title && <Text style={styles.title}>{title}</Text>}
+
         <View style={styles.seperator} />
 
         {content !== '' && content && (
           <Text style={styles.content}>{content}</Text>
         )}
         <View style={styles.additionalInfo}>
-          <View style={styles.iconWithTextContainer}>
-            <MaterialCommunityIcons
-              name="web"
-              size={responsiveFontSize(5)}
-              color={dodgerBlue}
-              onPress={() => handleOpenSourceSite()}
-            />
-            <Text style={{fontSize: responsiveFontSize(2)}}>
-              Visit Source Site
-            </Text>
-          </View>
-          <View style={styles.iconWithTextContainer}>
-            <MaterialCommunityIcons
-              name="pencil-outline"
-              size={responsiveFontSize(5)}
-              color={dodgerBlue}
-            />
-            {author !== '' && author && (
-              <Text style={styles.textBelowIcon}>{author}</Text>
-            )}
-          </View>
-          <View style={styles.iconWithTextContainer}>
-            <MaterialCommunityIcons
-              name="calendar-clock"
-              size={responsiveFontSize(5)}
-              color={dodgerBlue}
-            />
-            {date !== '' && date && (
-              <Text style={styles.textBelowIcon}>Date: {date}</Text>
-            )}
-            {time !== '' && time && (
-              <Text style={styles.textBelowIcon}>Time: {time}</Text>
-            )}
-          </View>
+          <IconWithText
+            iconName="web"
+            iconSize={5}
+            iconColor={dodgerBlue}
+            text1={'Visit Source Site'}
+            onPress={handleOpenSourceSite}
+          />
+          <IconWithText
+            iconName="pencil-outline"
+            iconSize={5}
+            iconColor={dodgerBlue}
+            text1={author}
+          />
+          <IconWithText
+            iconName="calendar-clock"
+            iconSize={5}
+            iconColor={dodgerBlue}
+            text1={`Date: ${date}`}
+            text2={`Time: ${time}`}
+          />
         </View>
       </View>
     </ScrollView>
