@@ -9,8 +9,10 @@ const HistoryScreen = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDataFromAsyncStorage());
-  }, []);
+  }, [data]);
+
   const data = useSelector(state => state.history.items);
+  const reversedData = JSON.parse(JSON.stringify(data)).reverse();
 
   const renderItem = ({item}) => {
     return (
@@ -25,7 +27,7 @@ const HistoryScreen = () => {
   };
   return (
     <FlatList
-      data={data}
+      data={reversedData}
       renderItem={renderItem}
       keyExtractor={item => item.id}
     />
