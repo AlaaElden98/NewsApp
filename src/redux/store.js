@@ -4,6 +4,7 @@ import sourcesReducer from './sourcesSlice';
 import topHeadlinesReducerEG from './topHeadlinesEGSlice';
 import topHeadlinesReducerUAE from './topHeadlinesUAESlice';
 import sourcesHeadlinesReducer from './sourcesHeadlinesSlice';
+import historyReducer from './historySlice';
 
 export default store = configureStore({
   reducer: {
@@ -11,5 +12,6 @@ export default store = configureStore({
     topHeadlinesEG: topHeadlinesReducerEG,
     topHeadlinesUAE: topHeadlinesReducerUAE,
     sourcesHeadlines: sourcesHeadlinesReducer,
+    history: historyReducer,
   },
 });
