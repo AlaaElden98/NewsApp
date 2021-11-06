@@ -1,14 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, View, Text, TouchableOpacity, Image} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import {getTopHeadlinesEG} from '../../redux/topHeadlinesEGSlice';
-import {updateEGStatus} from '../../redux/topHeadlinesEGSlice';
-import {updateUAEStatus} from '../../redux/topHeadlinesUAESlice';
-import {getTopHeadlinesUAE} from '../../redux/topHeadlinesUAESlice';
-import {responsiveWidth, responsiveHeight} from '../../utilis/helperFunctions';
-import {MAXIMUM_RESULTS_PAGE} from '../../utilis/constants';
+import {getTopHeadlinesEG} from '../../../redux/topHeadlinesEGSlice';
+import {updateEGStatus} from '../../../redux/topHeadlinesEGSlice';
+import {updateUAEStatus} from '../../../redux/topHeadlinesUAESlice';
+import {getTopHeadlinesUAE} from '../../../redux/topHeadlinesUAESlice';
+import {
+  responsiveFontSize,
+  calculateTimesDifference,
+} from '../../../utilis/helperFunctions';
+import {MAXIMUM_RESULTS_PAGE} from '../../../utilis/constants';
 
+import {styles} from './styles';
 export const TopHeadlinesList = ({navigation, route}) => {
   const {country} = route.params;
   const [page, setPage] = useState(1);
@@ -72,31 +77,32 @@ export const TopHeadlinesList = ({navigation, route}) => {
             content: item.content,
           });
         }}>
-        <View>
-          <Image
-            source={{uri: item.urlToImage}}
-            style={{
-              width: responsiveWidth(30),
-              height: responsiveHeight(25),
-              borderRadius: 15,
-            }}
-          />
-          <Text>`Title: {item.title}`</Text>
-          <Text>`Author: {item.author}`</Text>
-          <Text>`publishedAt: {item.publishedAt}`</Text>
+        <View style={styles.itemContainer}>
+          <Image source={{uri: item.urlToImage}} style={styles.image} />
+          <Text style={styles.title}>{item.title}`</Text>
+          <Text style={styles.author}>Author: {item.author}</Text>
+          <View style={styles.timeContainer}>
+            <Text style={styles.timeText}>
+              {calculateTimesDifference(item.publishedAt)}
+            </Text>
+            <Ionicons
+              name="md-time-outline"
+              size={responsiveFontSize(2.4)}
+              style={{marginLeft: 4}}
+            />
+          </View>
         </View>
       </TouchableOpacity>
     );
   };
 
   return (
-    <View>
-      <FlatList
-        data={topHeadlines}
-        renderItem={renderItem}
-        onEndReachedThreshold={0.5}
-        onEndReached={page < MAXIMUM_RESULTS_PAGE ? getNextPage : stopFetching}
-      />
-    </View>
+    <FlatList
+      data={topHeadlines}
+      renderItem={renderItem}
+      onEndReachedThreshold={0.5}
+      onEndReached={page < MAXIMUM_RESULTS_PAGE ? getNextPage : stopFetching}
+      style={{backgroundColor: 'white'}}
+    />
   );
 };
