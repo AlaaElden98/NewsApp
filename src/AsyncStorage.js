@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {Alert} from 'react-native';
 
 export const storeData = async (key, value) => {
   try {
@@ -16,6 +17,7 @@ export const getData = async key => {
     console.log('GetData', jsonValue);
     return jsonValue != null ? JSON.parse(jsonValue) : null;
   } catch (e) {
+    Alert.alert('Error loading your data', 'Try again later!');
     console.error(e);
   }
 };
