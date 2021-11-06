@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, View, Text, TouchableOpacity, Image} from 'react-native';
+import {FlatList, View, Text, TouchableOpacity, Image, Alert} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -33,6 +33,13 @@ export const TopHeadlinesList = ({navigation, route}) => {
     }
   }, [dispatch, page]);
 
+  const err = useSelector(state=>state.topHeadlinesEG.error)
+  
+  useEffect(() => {
+    if(status==='failed'){
+      Alert.alert(err.message,'Try again later')
+    }
+  }, [status]);
   const topHeadlines =
     country === 'eg'
       ? useSelector(state => state.topHeadlinesEG.items)

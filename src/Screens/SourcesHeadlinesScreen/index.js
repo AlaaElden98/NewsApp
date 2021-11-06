@@ -1,5 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  FlatList,
+  Alert,
+} from 'react-native';
 import PropTypes from 'prop-types';
 import {useDispatch, useSelector} from 'react-redux';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -36,6 +43,12 @@ const SourceHeadlinesScreen = ({navigation, route}) => {
     dispatch(updateSourcesHeadlinesStatus('stop'));
   };
 
+  const err = useSelector(state => state.sourcesHeadlines.error);
+  useEffect(() => {
+    if (status === 'failed') {
+      Alert.alert(err.message, 'Try again later');
+    }
+  }, [status]);
   const renderItem = ({item}) => {
     const {date, time} = getDateAndTime(item.publishedAt);
     return (
