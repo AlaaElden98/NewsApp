@@ -38,24 +38,8 @@ export const responsiveHeight = val => {
   return percentageCalculation(height, val);
 };
 
-export const calculateTimesDifference = pastTime => {
-  const currentDate = new Date();
-  const pastDate = new Date(pastTime);
-  const differnceInMs = Math.abs(currentDate - pastDate); // Difference in milliseconds.
-  const differnceInMinutes = Math.floor(differnceInMs / 60e3);
-  const days = (differnceInMinutes / (60 * 60)).toFixed();
-  const hours = (differnceInMinutes / 60).toFixed();
-  const minutes = differnceInMinutes % 60;
-  let difference = '';
-  if (days !== '0') {
-    difference += `${days} days `;
-  }
-  if (hours !== '0') {
-    difference += `${hours} hours `;
-  }
-  if (minutes !== '0') {
-    difference += `${minutes} minutes `;
-  }
-  difference += 'ago';
-  return difference;
+export const getDateAndTime = pastTime => {
+  let time = new Date(pastTime).toLocaleTimeString('en');
+  const date = new Date(pastTime).toLocaleDateString();
+  return {date: date, time: time.slice(0, 5)};
 };

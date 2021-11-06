@@ -40,5 +40,10 @@ export const styles = StyleSheet.create({
   },
   timeText: {
     fontSize: responsiveFontSize(1.8),
+    marginLeft:3
   },
+  dateText:{
+    fontSize: responsiveFontSize(1.8),
+    marginRight:8
+  }
 });

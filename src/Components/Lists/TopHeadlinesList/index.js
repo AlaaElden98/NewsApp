@@ -9,11 +9,12 @@ import {updateUAEStatus} from '../../../redux/topHeadlinesUAESlice';
 import {getTopHeadlinesUAE} from '../../../redux/topHeadlinesUAESlice';
 import {
   responsiveFontSize,
-  calculateTimesDifference,
+  getDateAndTime,
 } from '../../../utilis/helperFunctions';
 import {MAXIMUM_RESULTS_PAGE} from '../../../utilis/constants';
-
+import {topHeadlineFakeResponse} from '../../../fakeData';
 import {styles} from './styles';
+
 export const TopHeadlinesList = ({navigation, route}) => {
   const {country} = route.params;
   const [page, setPage] = useState(1);
@@ -65,6 +66,7 @@ export const TopHeadlinesList = ({navigation, route}) => {
     dispatch(updateUAEStatus('stop'));
   };
   const renderItem = ({item}) => {
+    const {date, time} = getDateAndTime(item.publishedAt);
     return (
       <TouchableOpacity
         onPress={() => {
@@ -82,14 +84,13 @@ export const TopHeadlinesList = ({navigation, route}) => {
           <Text style={styles.title}>{item.title}`</Text>
           <Text style={styles.author}>Author: {item.author}</Text>
           <View style={styles.timeContainer}>
-            <Text style={styles.timeText}>
-              {calculateTimesDifference(item.publishedAt)}
-            </Text>
+            <Text style={styles.dateText}>{date}</Text>
             <Ionicons
               name="md-time-outline"
               size={responsiveFontSize(2.4)}
               style={{marginLeft: 4}}
             />
+            <Text style={styles.timeText}>{time}</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -98,7 +99,7 @@ export const TopHeadlinesList = ({navigation, route}) => {
 
   return (
     <FlatList
-      data={topHeadlines}
+      data={topHeadlineFakeResponse.articles}
       renderItem={renderItem}
       onEndReachedThreshold={0.5}
       onEndReached={page < MAXIMUM_RESULTS_PAGE ? getNextPage : stopFetching}
