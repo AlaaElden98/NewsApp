@@ -20,6 +20,14 @@ export const styles = StyleSheet.create({
     resizeMode: 'cover',
     margin: 5,
   },
+  noImage:{
+    width: responsiveWidth(93),
+    height: responsiveHeight(30),
+    alignSelf: 'center',
+    resizeMode: 'contain',
+    backgroundColor: 'white',
+    margin: 5,
+  },
   title: {
     fontSize: responsiveFontSize(2.2),
     lineHeight: responsiveHeight(4),

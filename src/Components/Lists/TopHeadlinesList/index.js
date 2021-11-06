@@ -80,18 +80,34 @@ export const TopHeadlinesList = ({navigation, route}) => {
           });
         }}>
         <View style={styles.itemContainer}>
-          <Image source={{uri: item.urlToImage}} style={styles.image} />
-          <Text style={styles.title}>{item.title}`</Text>
-          <Text style={styles.author}>Author: {item.author}</Text>
-          <View style={styles.timeContainer}>
-            <Text style={styles.dateText}>{date}</Text>
-            <Ionicons
-              name="md-time-outline"
-              size={responsiveFontSize(2.4)}
-              style={{marginLeft: 4}}
-            />
-            <Text style={styles.timeText}>{time}</Text>
-          </View>
+          <Image
+            source={
+              item.urlToImage
+                ? {
+                    uri: item.urlToImage,
+                  }
+                : require('../../../utilis/assests/NO_IMAGE.jpg')
+            }
+            style={item.urlToImage ? styles.image : styles.noImage}
+            loadingIndicatorSource={1}
+          />
+          {item.title !== '' && item.title && (
+            <Text style={styles.title}>{item.title}`</Text>
+          )}
+          {item.author !== '' && item.author && (
+            <Text style={styles.author}>Author: {item.author}</Text>
+          )}
+          {item.publishedAt !== '' && item.publishedAt && (
+            <View style={styles.timeContainer}>
+              <Text style={styles.dateText}>{date}</Text>
+              <Ionicons
+                name="md-time-outline"
+                size={responsiveFontSize(2.4)}
+                style={{marginLeft: 4}}
+              />
+              <Text style={styles.timeText}>{time}</Text>
+            </View>
+          )}
         </View>
       </TouchableOpacity>
     );
