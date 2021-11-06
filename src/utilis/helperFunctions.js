@@ -53,3 +53,20 @@ export const getCountryName = countryCode => {
     return countryCode;
   }
 };
+
+export const getCurrentDate = () => {
+  const currentdate = new Date();
+  const date =
+    currentdate.getDate() +
+    '/' +
+    (currentdate.getMonth() + 1) +
+    '/' +
+    currentdate.getFullYear();
+  return date;
+};
+
+export const getCurrentTime = () => {
+  const currentdate = new Date();
+  const time = currentdate.getHours() + ':' + currentdate.getMinutes();
+  return time;
+};
