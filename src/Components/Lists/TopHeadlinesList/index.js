@@ -97,7 +97,7 @@ export const TopHeadlinesList = ({navigation, route}) => {
 
   return (
     <FlatList
-      data={topHeadlineFakeResponse.articles}
+      data={topHeadlines}
       renderItem={renderItem}
       onEndReachedThreshold={0.5}
       onEndReached={page < MAXIMUM_RESULTS_PAGE ? getNextPage : stopFetching}

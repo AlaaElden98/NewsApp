@@ -23,9 +23,7 @@ const SourcesScreen = ({navigation}) => {
     }
   }, [status]);
 
-  return (
-    <SourcesList navigation={navigation} data={sourcesFakeResponse.sources} />
-  );
+  return <SourcesList navigation={navigation} data={sources} />;
 };
 
 export default SourcesScreen;
