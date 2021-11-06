@@ -1,11 +1,17 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {View, Text, Image, ScrollView, Alert, Linking} from 'react-native';
 import PropTypes from 'prop-types';
 
 import {IconWithText} from '../../components/IconWithText';
-import {getDateAndTime} from '../../utilis/helperFunctions';
+import {
+  getCurrentDate,
+  getCurrentTime,
+  getDateAndTime,
+} from '../../utilis/helperFunctions';
 import {dodgerBlue} from '../../utilis/colors';
 import {styles} from './styles';
+import {useDispatch, useSelector} from 'react-redux';
+import {addItem, updateItems} from '../../redux/historySlice';
 
 const DetailsScreen = ({route}) => {
   const {
@@ -19,7 +25,34 @@ const DetailsScreen = ({route}) => {
   } = route.params;
 
   const {date, time} = getDateAndTime(publishedAt);
+  const dispatch = useDispatch();
+  const history = useSelector(state => state.history.items);
 
+  const saveHistory = () => {
+    const currentData = getCurrentDate();
+    const currentTime = getCurrentTime();
+    const findElemntById = element => element.id === sourceUrl;
+    const elementIndex = history.findIndex(findElemntById);
+
+    if (elementIndex === -1) {
+      const item = {
+        id: sourceUrl,
+        title: title,
+        author: author,
+        sourceName: sourceName,
+        date: currentData,
+        time: currentTime,
+      };
+      dispatch(addItem(item));
+    } else {
+      history[elementIndex].date = currentData;
+      history[elementIndex].time = currentTime;
+      updateItems(history);
+    }
+  };
+  useEffect(() => {
+    saveHistory();
+  }, []);
   const handleOpenSourceSite = useCallback(async () => {
     if (!sourceUrl) {
       Alert.alert(`Sorry, ${sourceName}  web site is not availiable :/`);
@@ -27,7 +60,6 @@ const DetailsScreen = ({route}) => {
     }
     // Checking if the link is supported for links with custom URL scheme.
     const supported = await Linking.canOpenURL(sourceUrl);
-
     if (supported) {
       // Opening the link with some app, if the URL scheme is "http" the web link should be opened
       // by some browser in the mobile
