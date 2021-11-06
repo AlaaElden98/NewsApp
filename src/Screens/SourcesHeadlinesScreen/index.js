@@ -9,11 +9,9 @@ import {
   updateSourcesHeadlinesStatus,
 } from '../../redux/sourcesHeadlinesSlice';
 import {MAXIMUM_RESULTS_PAGE} from '../../utilis/constants';
-import {
-  calculateTimesDifference,
-  responsiveFontSize,
-} from '../../utilis/helperFunctions';
+import {getDateAndTime, responsiveFontSize} from '../../utilis/helperFunctions';
 import {styles} from './styles';
+import { topHeadlineFakeResponse } from '../../fakeData';
 
 const SourceHeadlinesScreen = ({navigation, route}) => {
   const {sourceId} = route.params;
@@ -39,6 +37,7 @@ const SourceHeadlinesScreen = ({navigation, route}) => {
   };
 
   const renderItem = ({item}) => {
+    const {date, time} = getDateAndTime(item.publishedAt);
     return (
       <TouchableOpacity
         onPress={() => {
@@ -56,14 +55,13 @@ const SourceHeadlinesScreen = ({navigation, route}) => {
           <Text style={styles.title}>{item.title}`</Text>
           <Text style={styles.author}>Author: {item.author}</Text>
           <View style={styles.timeContainer}>
-            <Text style={styles.timeText}>
-              {calculateTimesDifference(item.publishedAt)}
-            </Text>
+            <Text style={styles.dateText}>{date}</Text>
             <Ionicons
               name="md-time-outline"
               size={responsiveFontSize(2.4)}
               style={{marginLeft: 4}}
             />
+            <Text style={styles.timeText}>{time}</Text>
           </View>
         </View>
       </TouchableOpacity>
