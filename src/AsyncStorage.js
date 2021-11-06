@@ -21,3 +21,15 @@ export const getData = async key => {
     console.error(e);
   }
 };
+
+const clearAll = async () => {
+  try {
+    await AsyncStorage.clear();
+  } catch (e) {
+    // clear error
+  }
+
+  console.log('Done.');
+};
+// Debug Purposes, Should never use it in actual developing
+// clearAll();
