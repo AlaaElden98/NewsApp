@@ -48,6 +48,9 @@ const DetailsScreen = ({route}) => {
       const copy = JSON.parse(JSON.stringify(history));
       copy[elementIndex].date = currentData;
       copy[elementIndex].time = currentTime;
+      const item = copy[elementIndex];
+      copy.splice(elementIndex, 1);
+      copy.push(item);
       dispatch(updateItems(copy));
     }
   };
