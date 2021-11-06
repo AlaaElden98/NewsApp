@@ -48,6 +48,7 @@ const SourceHeadlinesScreen = ({navigation, route}) => {
             urlToImage: item.urlToImage,
             publishedAt: item.publishedAt,
             content: item.content,
+            sourceName: item.source.name,
           });
         }}>
         <View style={styles.itemContainer}>
