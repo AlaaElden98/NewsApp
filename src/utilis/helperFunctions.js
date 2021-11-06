@@ -1,4 +1,5 @@
 import {Dimensions} from 'react-native';
+import {isoCountries} from './isoCountries';
 
 const percentageCalculation = (max, val) => max * (val / 100);
 
@@ -42,4 +43,13 @@ export const getDateAndTime = pastTime => {
   let time = new Date(pastTime).toLocaleTimeString('en');
   const date = new Date(pastTime).toLocaleDateString();
   return {date: date, time: time.slice(0, 5)};
+};
+
+export const getCountryName = countryCode => {
+  countryCode = countryCode.toUpperCase();
+  if (isoCountries.hasOwnProperty(countryCode)) {
+    return isoCountries[countryCode];
+  } else {
+    return countryCode;
+  }
 };
