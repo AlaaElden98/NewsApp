@@ -2,7 +2,7 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import SourcesScreen from '../../screens/SourcesScreen';
-import ResourceHeadlinesScreen from '../../screens/ResourceHeadlinesScreen';
+import SourceHeadlinesScreen from '../../screens/SourcesHeadlinesScreen';
 import DetailsScreen from '../../screens/DetailsScreen';
 
 const Stack = createNativeStackNavigator();
@@ -16,8 +16,8 @@ export function SourcesStack() {
         options={{title: 'Sources'}}
       />
       <Stack.Screen
-        name="ResourceHeadlinesScreen"
-        component={ResourceHeadlinesScreen}
+        name="SourceHeadlinesScreen"
+        component={SourceHeadlinesScreen}
         options={{title: 'Headlines from source'}}
       />
       <Stack.Screen

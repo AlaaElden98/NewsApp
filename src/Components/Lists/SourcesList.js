@@ -7,7 +7,7 @@ export const SourcesList = ({navigation, data}) => {
     return (
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('ResourceHeadlinesScreen', {
+          navigation.navigate('SourceHeadlinesScreen', {
             sourceId: item.id,
           });
         }}>
