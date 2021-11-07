@@ -39,12 +39,20 @@ export const responsiveHeight = val => {
   return percentageCalculation(height, val);
 };
 
+/**
+ * @param {string} pastTime
+ * @returns {object} {date:'DD/MM/YY', time: 'HH:MM'}
+ */
 export const getDateAndTime = pastTime => {
   let time = new Date(pastTime).toLocaleTimeString('en');
   const date = new Date(pastTime).toLocaleDateString();
   return {date: date, time: time.slice(0, 5)};
 };
 
+/**
+ * @param {string} countryCode
+ * @returns Country name -If exist-
+ */
 export const getCountryName = countryCode => {
   countryCode = countryCode.toUpperCase();
   if (isoCountries.hasOwnProperty(countryCode)) {
@@ -54,6 +62,9 @@ export const getCountryName = countryCode => {
   }
 };
 
+/**
+ * @returns {string} Current date, format 'DD/MM/YYYY'
+ */
 export const getCurrentDate = () => {
   const currentdate = new Date();
   const date =
@@ -65,17 +76,30 @@ export const getCurrentDate = () => {
   return date;
 };
 
+/**
+ * @returns {string} Current time
+ */
 export const getCurrentTime = () => {
   const currentdate = new Date();
   const time = currentdate.getHours() + ':' + currentdate.getMinutes();
   return time;
 };
 
+/**
+ * @param {number} from The starting index
+ * @param {number} to The end index -not included-
+ * @param {string} str The string to trim
+ * @returns {string} str[from] + str[from+1] + ... + str[to-1] + '...'
+ */
 export const trimString = (from, to, str) => {
   let trimmedString = str.slice(from, to);
   return trimmedString + '...';
 };
 
+/**
+ * @param {string} names
+ * @returns {string} one name, or if the string is to big, 'Unknow Author'
+ */
 export const getOneName = names => {
   if (names.length > 25) return 'Unknown Author';
   const words = names.split(' ');
