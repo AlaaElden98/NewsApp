@@ -41,4 +41,5 @@ export const styles = StyleSheet.create({
     resizeMode: 'center',
     alignSelf: 'center',
   },
+  scrollView: {backgroundColor: 'white'},
 });

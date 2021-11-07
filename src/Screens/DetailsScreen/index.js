@@ -74,7 +74,7 @@ const DetailsScreen = ({route}) => {
   }, [sourceUrl]);
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
         <Image
           source={
