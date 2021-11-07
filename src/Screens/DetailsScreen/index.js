@@ -7,6 +7,7 @@ import {
   getCurrentDate,
   getCurrentTime,
   getDateAndTime,
+  trimString,
 } from '../../utilis/helperFunctions';
 import {dodgerBlue} from '../../utilis/colors';
 import {styles} from './styles';
@@ -72,7 +73,6 @@ const DetailsScreen = ({route}) => {
       Alert.alert(`Don't know how to open this URL: ${sourceUrl}`);
     }
   }, [sourceUrl]);
-  console.log(urlToImage);
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
@@ -94,7 +94,9 @@ const DetailsScreen = ({route}) => {
         <View style={styles.seperator} />
 
         {content !== '' && content && (
-          <Text style={styles.content}>{content}</Text>
+          <Text style={styles.content}>
+            {content.length > 200 ? trimString(0, -20, content) : content}
+          </Text>
         )}
         <View style={styles.additionalInfo}>
           <IconWithText

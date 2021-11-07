@@ -70,3 +70,8 @@ export const getCurrentTime = () => {
   const time = currentdate.getHours() + ':' + currentdate.getMinutes();
   return time;
 };
+
+export const trimString = (from, to, str) => {
+  let trimmedString = str.slice(from, to);
+  return trimmedString + '...';
+};
