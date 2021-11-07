@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {FlatList, View, Text, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 import {styles} from './styles';
@@ -7,6 +7,7 @@ import {EndOfResults} from '../../EndOfResults';
 import {CustomActivityIndicator} from '../../CustomActivityIndicator';
 
 export const SourcesList = ({navigation, data}) => {
+  const [endReached, setEndReached] = useState(false);
   const renderItem = ({item}) => {
     return (
       <TouchableOpacity
@@ -34,8 +35,11 @@ export const SourcesList = ({navigation, data}) => {
       renderItem={renderItem}
       style={{backgroundColor: 'white'}}
       ListFooterComponent={
-        data ? <CustomActivityIndicator size={40} /> : <EndOfResults />
+        endReached ? <EndOfResults /> : <CustomActivityIndicator size={40} />
       }
+      onEndReached={() => {
+        setEndReached(true);
+      }}
     />
   );
 };
