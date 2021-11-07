@@ -72,19 +72,21 @@ const DetailsScreen = ({route}) => {
       Alert.alert(`Don't know how to open this URL: ${sourceUrl}`);
     }
   }, [sourceUrl]);
-
+  console.log(urlToImage);
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
         <Image
           source={
-            urlToImage
+            urlToImage !== 'null' && urlToImage
               ? {
                   uri: urlToImage,
                 }
               : require('../../utilis/assests/NO_IMAGE.jpg')
           }
-          style={urlToImage ? styles.image : styles.noImage}
+          style={
+            urlToImage && urlToImage !== 'null' ? styles.image : styles.noImage
+          }
         />
 
         {title !== '' && title && <Text style={styles.title}>{title}</Text>}

@@ -13,13 +13,15 @@ export const Card = props => {
     <View style={styles.itemContainer}>
       <Image
         source={
-          urlToImage
+          urlToImage !== 'null' && urlToImage
             ? {
                 uri: urlToImage,
               }
             : require('../../utilis/assests/NO_IMAGE.jpg')
         }
-        style={urlToImage ? styles.image : styles.noImage}
+        style={
+          urlToImage !== 'null' && urlToImage ? styles.image : styles.noImage
+        }
         loadingIndicatorSource={1}
       />
       {title !== '' && title && <Text style={styles.title}>{title}`</Text>}
