@@ -21,16 +21,16 @@ Install [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/)
   - `yarn install` to download the dependencies and generates node_module.
   - `yarn start` to starts Metro Bundler.
   - `yarn android` to run on android device/emulator.
-  - `npm run ios` to run on ios device/emulator. (Note: I havn't tested the app on ios machine)
+  - `yarn ios` to run on ios device/emulator. (Note: I havn't tested the app on ios machine)
 
 ## API and External libraries
 
-[NEWS API](https://newsapi.org/).
-[React Navigation (native/native-stack/buttom-tabs/top-tabs)](https://reactnavigation.org/docs/getting-started/#installation)
-[Redux Toolkit](https://redux-toolkit.js.org/)
-[prop-types](https://github.com/facebook/prop-types)
-[react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
-[react-native-config](https://github.com/luggit/react-native-config)
+- [NEWS API](https://newsapi.org/).
+- [React Navigation (native/native-stack/buttom-tabs/top-tabs)](https://reactnavigation.org/docs/getting-started/#installation)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [prop-types](https://github.com/facebook/prop-types)
+- [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
+- [react-native-config](https://github.com/luggit/react-native-config)
 
 ## More about the app
 
