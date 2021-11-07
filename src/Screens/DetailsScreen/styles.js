@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
     marginBottom: 5,
     lineHeight: responsiveHeight(3.8),
   },
-  additionalInfo: {flexDirection: 'row', justifyContent: 'space-between'},
+  additionalInfo: {flexDirection: 'row', justifyContent: 'space-around'},
   iconWithTextContainer: {justifyContent: 'center', alignItems: 'center'},
   textBelowIcon: {fontSize: responsiveFontSize(2)},
   noImage: {
