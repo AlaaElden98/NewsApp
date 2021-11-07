@@ -11,7 +11,6 @@ import {MAXIMUM_RESULTS_PAGE} from '../../utilis/constants';
 import {Card} from '../../components/Card';
 import {CustomActivityIndicator} from '../../components/CustomActivityIndicator';
 import {EndOfResults} from '../../components/EndOfResults';
-import {NoData} from '../../components/NoData';
 import {getOneName} from '../../utilis/helperFunctions';
 
 const SourceHeadlinesScreen = ({navigation, route}) => {
@@ -86,7 +85,6 @@ const SourceHeadlinesScreen = ({navigation, route}) => {
           <EndOfResults />
         )
       }
-      ListEmptyComponent={<NoData />}
       style={{backgroundColor: 'white'}}
     />
   );

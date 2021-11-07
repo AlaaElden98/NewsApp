@@ -5,7 +5,6 @@ import {styles} from './styles';
 import {getCountryName} from '../../../utilis/helperFunctions';
 import {EndOfResults} from '../../EndOfResults';
 import {CustomActivityIndicator} from '../../CustomActivityIndicator';
-import {NoData} from '../../NoData';
 
 export const SourcesList = ({navigation, data}) => {
   const renderItem = ({item}) => {
@@ -37,7 +36,6 @@ export const SourcesList = ({navigation, data}) => {
       ListFooterComponent={
         data ? <CustomActivityIndicator size={40} /> : <EndOfResults />
       }
-      ListEmptyComponent={<NoData />}
     />
   );
 };

@@ -11,7 +11,6 @@ import {MAXIMUM_RESULTS_PAGE} from '../../../utilis/constants';
 import {Card} from '../../Card';
 import {CustomActivityIndicator} from '../../CustomActivityIndicator';
 import {EndOfResults} from '../../EndOfResults';
-import {NoData} from '../../NoData';
 
 export const TopHeadlinesList = ({navigation, route}) => {
   const {country} = route.params;
@@ -117,7 +116,6 @@ export const TopHeadlinesList = ({navigation, route}) => {
           <EndOfResults />
         )
       }
-      ListEmptyComponent={<NoData />}
       style={{backgroundColor: 'white'}}
     />
   );
