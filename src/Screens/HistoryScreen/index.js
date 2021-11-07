@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {View, Text, FlatList} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
+import {NoData} from '../../components/NoData';
 import {getDataFromAsyncStorage} from '../../redux/historySlice';
 import {styles} from './styles';
 
@@ -30,6 +31,7 @@ const HistoryScreen = () => {
       data={reversedData}
       renderItem={renderItem}
       keyExtractor={item => item.id}
+      ListEmptyComponent={<NoData />}
     />
   );
 };

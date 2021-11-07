@@ -8,8 +8,10 @@ import {
   updateSourcesHeadlinesStatus,
 } from '../../redux/sourcesHeadlinesSlice';
 import {MAXIMUM_RESULTS_PAGE} from '../../utilis/constants';
-import {getDateAndTime} from '../../utilis/helperFunctions';
 import {Card} from '../../components/Card';
+import {CustomActivityIndicator} from '../../components/CustomActivityIndicator';
+import {EndOfResults} from '../../components/EndOfResults';
+import {NoData} from '../../components/NoData';
 
 const SourceHeadlinesScreen = ({navigation, route}) => {
   const {sourceId} = route.params;
@@ -64,15 +66,21 @@ const SourceHeadlinesScreen = ({navigation, route}) => {
   };
 
   return (
-    <View>
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        onEndReachedThreshold={0.5}
-        onEndReached={page < MAXIMUM_RESULTS_PAGE ? getNextPage : stopFetching}
-        style={{backgroundColor: 'white'}}
-      />
-    </View>
+    <FlatList
+      data={data}
+      renderItem={renderItem}
+      onEndReachedThreshold={0.5}
+      onEndReached={page < MAXIMUM_RESULTS_PAGE ? getNextPage : stopFetching}
+      ListFooterComponent={
+        page < MAXIMUM_RESULTS_PAGE ? (
+          <CustomActivityIndicator size={40} />
+        ) : (
+          <EndOfResults />
+        )
+      }
+      ListEmptyComponent={<NoData />}
+      style={{backgroundColor: 'white'}}
+    />
   );
 };
 

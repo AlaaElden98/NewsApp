@@ -8,8 +8,10 @@ import {updateUAEStatus} from '../../../redux/topHeadlinesUAESlice';
 import {getTopHeadlinesUAE} from '../../../redux/topHeadlinesUAESlice';
 import {getCountryName} from '../../../utilis/helperFunctions';
 import {MAXIMUM_RESULTS_PAGE} from '../../../utilis/constants';
-import {topHeadlineFakeResponse} from '../../../fakeData';
 import {Card} from '../../Card';
+import {CustomActivityIndicator} from '../../CustomActivityIndicator';
+import {EndOfResults} from '../../EndOfResults';
+import {NoData} from '../../NoData';
 
 export const TopHeadlinesList = ({navigation, route}) => {
   const {country} = route.params;
@@ -101,6 +103,14 @@ export const TopHeadlinesList = ({navigation, route}) => {
       renderItem={renderItem}
       onEndReachedThreshold={0.5}
       onEndReached={page < MAXIMUM_RESULTS_PAGE ? getNextPage : stopFetching}
+      ListFooterComponent={
+        page < MAXIMUM_RESULTS_PAGE ? (
+          <CustomActivityIndicator size={40} />
+        ) : (
+          <EndOfResults />
+        )
+      }
+      ListEmptyComponent={<NoData />}
       style={{backgroundColor: 'white'}}
     />
   );
