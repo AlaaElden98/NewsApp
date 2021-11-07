@@ -58,21 +58,15 @@ const DetailsScreen = ({route}) => {
   useEffect(() => {
     saveHistory();
   }, []);
+
   const handleOpenSourceSite = useCallback(async () => {
     if (!sourceUrl) {
       Alert.alert(`Sorry, ${sourceName}  web site is not availiable :/`);
       return;
     }
-    // Checking if the link is supported for links with custom URL scheme.
-    const supported = await Linking.canOpenURL(sourceUrl);
-    if (supported) {
-      // Opening the link with some app, if the URL scheme is "http" the web link should be opened
-      // by some browser in the mobile
-      await Linking.openURL(sourceUrl);
-    } else {
-      Alert.alert(`Don't know how to open this URL: ${sourceUrl}`);
-    }
+    await Linking.openURL(sourceUrl);
   }, [sourceUrl]);
+
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
