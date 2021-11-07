@@ -12,6 +12,7 @@ import {Card} from '../../components/Card';
 import {CustomActivityIndicator} from '../../components/CustomActivityIndicator';
 import {EndOfResults} from '../../components/EndOfResults';
 import {NoData} from '../../components/NoData';
+import {getOneName} from '../../utilis/helperFunctions';
 
 const SourceHeadlinesScreen = ({navigation, route}) => {
   const {sourceId} = route.params;
@@ -46,7 +47,10 @@ const SourceHeadlinesScreen = ({navigation, route}) => {
       <TouchableOpacity
         onPress={() => {
           navigation.navigate('DetailsScreen', {
-            author: item.author,
+            author:
+              item.author && item.author != ''
+                ? getOneName(item.author)
+                : 'Unknown',
             title: item.title,
             sourceUrl: item.url,
             urlToImage: item.urlToImage,
@@ -58,7 +62,11 @@ const SourceHeadlinesScreen = ({navigation, route}) => {
         <Card
           urlToImage={item.urlToImage}
           title={item.title}
-          author={item.author}
+          author={
+            item.author && item.author != ''
+              ? getOneName(item.author)
+              : 'Unknown'
+          }
           publishedAt={item.publishedAt}
         />
       </TouchableOpacity>

@@ -6,7 +6,7 @@ import {getTopHeadlinesEG} from '../../../redux/topHeadlinesEGSlice';
 import {updateEGStatus} from '../../../redux/topHeadlinesEGSlice';
 import {updateUAEStatus} from '../../../redux/topHeadlinesUAESlice';
 import {getTopHeadlinesUAE} from '../../../redux/topHeadlinesUAESlice';
-import {getCountryName} from '../../../utilis/helperFunctions';
+import {getCountryName, getOneName} from '../../../utilis/helperFunctions';
 import {MAXIMUM_RESULTS_PAGE} from '../../../utilis/constants';
 import {Card} from '../../Card';
 import {CustomActivityIndicator} from '../../CustomActivityIndicator';
@@ -78,7 +78,10 @@ export const TopHeadlinesList = ({navigation, route}) => {
       <TouchableOpacity
         onPress={() => {
           navigation.navigate('DetailsScreen', {
-            author: item.author,
+            author:
+              item.author && item.author != ''
+                ? getOneName(item.author)
+                : 'Unknown',
             title: item.title,
             sourceUrl: item.url,
             urlToImage: item.urlToImage,
@@ -90,7 +93,11 @@ export const TopHeadlinesList = ({navigation, route}) => {
         <Card
           urlToImage={item.urlToImage}
           title={item.title}
-          author={item.author}
+          author={
+            item.author && item.author != ''
+              ? getOneName(item.author)
+              : 'Unknown'
+          }
           publishedAt={item.publishedAt}
         />
       </TouchableOpacity>

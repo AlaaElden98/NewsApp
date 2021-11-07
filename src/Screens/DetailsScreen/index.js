@@ -98,6 +98,13 @@ const DetailsScreen = ({route}) => {
             {content.length > 200 ? trimString(0, -20, content) : content}
           </Text>
         )}
+        <IconWithText
+          iconName="web"
+          iconSize={6}
+          iconColor={dodgerBlue}
+          text1={`Visit ${sourceName} Site`}
+          onPress={handleOpenSourceSite}
+        />
         <View style={styles.additionalInfo}>
           <IconWithText
             iconName="pencil-outline"
@@ -113,13 +120,6 @@ const DetailsScreen = ({route}) => {
             text2={`Time: ${time}`}
           />
         </View>
-        <IconWithText
-          iconName="web"
-          iconSize={6}
-          iconColor={dodgerBlue}
-          text1={`Visit ${sourceName} Site`}
-          onPress={handleOpenSourceSite}
-        />
       </View>
     </ScrollView>
   );
