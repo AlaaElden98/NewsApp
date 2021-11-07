@@ -77,6 +77,7 @@ export const trimString = (from, to, str) => {
 };
 
 export const getOneName = names => {
+  if (names.length > 25) return 'Unknown Author';
   const words = names.split(' ');
   let name = words[0];
   if (words[1]) name += ' ' + words[1];

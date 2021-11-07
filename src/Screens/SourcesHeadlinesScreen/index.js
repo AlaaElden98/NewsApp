@@ -49,7 +49,7 @@ const SourceHeadlinesScreen = ({navigation, route}) => {
             author:
               item.author && item.author != ''
                 ? getOneName(item.author)
-                : 'Unknown',
+                : 'Unknown Author',
             title: item.title,
             sourceUrl: item.url,
             urlToImage: item.urlToImage,
@@ -64,7 +64,7 @@ const SourceHeadlinesScreen = ({navigation, route}) => {
           author={
             item.author && item.author != ''
               ? getOneName(item.author)
-              : 'Unknown'
+              : 'Unknown Author'
           }
           publishedAt={item.publishedAt}
         />
