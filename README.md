@@ -26,7 +26,7 @@ Install [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/)
 ## API and External libraries
 
 - [NEWS API](https://newsapi.org/).
-- [React Navigation (native/native-stack/buttom-tabs/top-tabs)](https://reactnavigation.org/docs/getting-started/#installation)
+- [React Navigation](https://reactnavigation.org/docs/getting-started/#installation) (native/native-stack/buttom-tabs/top-tabs)
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 - [prop-types](https://github.com/facebook/prop-types)
 - [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
