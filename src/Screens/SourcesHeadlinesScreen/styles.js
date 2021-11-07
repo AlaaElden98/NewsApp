@@ -1,9 +1,11 @@
 import {StyleSheet} from 'react-native';
+
 import {
   responsiveFontSize,
   responsiveHeight,
   responsiveWidth,
 } from '../../utilis/helperFunctions';
+
 export const styles = StyleSheet.create({
   itemContainer: {
     backgroundColor: '#f7f7f7',

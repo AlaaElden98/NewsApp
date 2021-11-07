@@ -3,7 +3,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Alert} from 'react-native';
 
 import {SourcesList} from '../components/Lists/SourcesList';
-import {sourcesFakeResponse} from '../fakeData';
 import {getSources} from '../redux/sourcesSlice';
 
 const SourcesScreen = ({navigation}) => {

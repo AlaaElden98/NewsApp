@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import PropTypes from 'prop-types';
 
 import {getDateAndTime, responsiveFontSize} from '../../utilis/helperFunctions';
 import {styles} from './styles';
@@ -41,4 +42,11 @@ export const Card = props => {
       )}
     </View>
   );
+};
+
+Card.propTypes = {
+  urlToImage: PropTypes.string,
+  title: PropTypes.string,
+  author: PropTypes.string,
+  publishedAt: PropTypes.string,
 };

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, TouchableOpacity, Alert} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+import PropTyoes from 'prop-types';
 
 import {getTopHeadlinesEG} from '../../../redux/topHeadlinesEGSlice';
 import {updateEGStatus} from '../../../redux/topHeadlinesEGSlice';
@@ -119,4 +120,8 @@ export const TopHeadlinesList = ({navigation, route}) => {
       style={{backgroundColor: 'white'}}
     />
   );
+};
+
+TopHeadlinesList.propTypes = {
+  country: PropTyoes.oneOf(['eg', 'ae']),
 };

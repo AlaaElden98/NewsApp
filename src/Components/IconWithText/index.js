@@ -1,9 +1,11 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text} from 'react-native';
+import PropTypes from 'prop-types';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {responsiveFontSize} from '../../utilis/helperFunctions';
 
+import {responsiveFontSize} from '../../utilis/helperFunctions';
 import {styles} from './styles';
+
 export const IconWithText = props => {
   const {
     iconName,
@@ -26,4 +28,14 @@ export const IconWithText = props => {
       {text2 && <Text style={styles.textBelowIcon}>{text2}</Text>}
     </View>
   );
+};
+
+IconWithText.propTypes = {
+  iconName: PropTypes.string,
+  iconSize: PropTypes.number,
+  iconColor: PropTypes.string,
+  text1: PropTypes.string,
+  text2: PropTypes.string,
+  onPress: PropTypes.func,
+  backgroundColor: PropTypes.string,
 };
