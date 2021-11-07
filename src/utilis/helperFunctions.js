@@ -78,6 +78,7 @@ export const trimString = (from, to, str) => {
 
 export const getOneName = names => {
   const words = names.split(' ');
-  const name = words[0] + ' ' + words[1];
+  let name = words[0];
+  if (words[1]) name += ' ' + words[1];
   return name;
 };
