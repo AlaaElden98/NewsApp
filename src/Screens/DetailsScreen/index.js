@@ -1,5 +1,13 @@
 import React, {useCallback, useEffect} from 'react';
-import {View, Text, Image, ScrollView, Alert, Linking} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  Alert,
+  Linking,
+  TouchableOpacity,
+} from 'react-native';
 import PropTypes from 'prop-types';
 
 import {IconWithText} from '../../components/IconWithText';
@@ -92,13 +100,15 @@ const DetailsScreen = ({route}) => {
             {content.length > 200 ? trimString(0, -20, content) : content}
           </Text>
         )}
-        <IconWithText
-          iconName="web"
-          iconSize={6}
-          iconColor={dodgerBlue}
-          text1={`Visit ${sourceName} Site`}
-          onPress={handleOpenSourceSite}
-        />
+        <TouchableOpacity>
+          <IconWithText
+            iconName="web"
+            iconSize={6}
+            iconColor={dodgerBlue}
+            text1={`Visit ${sourceName} Site`}
+            onPress={handleOpenSourceSite}
+          />
+        </TouchableOpacity>
         <View style={styles.additionalInfo}>
           <IconWithText
             iconName="pencil-outline"
