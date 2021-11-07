@@ -24,7 +24,7 @@ export const Card = props => {
         }
         loadingIndicatorSource={1}
       />
-      {title !== '' && title && <Text style={styles.title}>{title}`</Text>}
+      {title !== '' && title && <Text style={styles.title}>{title}</Text>}
       {author !== '' && author && (
         <Text style={styles.author}>Author: {author}</Text>
       )}
