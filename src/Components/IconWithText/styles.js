@@ -8,5 +8,5 @@ export const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
   },
-  textBelowIcon: {fontSize: responsiveFontSize(2), numberOfLines: 1},
+  textBelowIcon: {fontSize: responsiveFontSize(2)},
 });
