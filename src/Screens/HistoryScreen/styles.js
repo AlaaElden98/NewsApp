@@ -3,7 +3,13 @@ import {StyleSheet} from 'react-native';
 import {responsiveFontSize} from '../../utilis/helperFunctions';
 
 export const styles = StyleSheet.create({
-  container: {flex: 1, padding: 15, backgroundColor: 'white', borderRadius: 20},
+  container: {
+    flex: 1,
+    padding: 15,
+    backgroundColor: '#e0e0e0',
+    borderRadius: 20,
+    margin: 10,
+  },
   title: {
     fontSize: responsiveFontSize(2.2),
     textAlign: 'center',

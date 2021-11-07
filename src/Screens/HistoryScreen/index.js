@@ -32,6 +32,7 @@ const HistoryScreen = () => {
       renderItem={renderItem}
       keyExtractor={item => item.id}
       ListEmptyComponent={<NoData />}
+      style={{backgroundColor: 'white'}}
     />
   );
 };

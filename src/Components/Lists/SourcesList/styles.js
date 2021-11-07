@@ -1,9 +1,9 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import {responsiveFontSize} from '../../../utilis/helperFunctions';
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#f7f7f7',
+    backgroundColor: '#e0e0e0',
     margin: 6,
     borderRadius: 25,
     padding: 8,
